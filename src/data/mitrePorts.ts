@@ -1,0 +1,31 @@
+import { PortRecord } from '../types';
+
+export const MITRE_PORT_DATABASE: PortRecord[] = [
+  { port: 21, service: 'FTP', proto: 'TCP', risk: 'HIGH', vector: 'T1078 Cleartext Credentials, T1190 Anonymous Auth' },
+  { port: 22, service: 'SSH', proto: 'TCP', risk: 'MEDIUM', vector: 'T1110 Brute Force, T1021.004 Remote Services SSH' },
+  { port: 23, service: 'Telnet', proto: 'TCP', risk: 'CRITICAL', vector: 'T1040 Network Sniffing, T1078 Unencrypted Credentials' },
+  { port: 25, service: 'SMTP', proto: 'TCP', risk: 'MEDIUM', vector: 'T1566 Phishing Email relay, Open Relay Enumeration' },
+  { port: 53, service: 'DNS', proto: 'UDP/TCP', risk: 'HIGH', vector: 'T1071.004 DNS Tunneling, T1498 DNS Amplification DDoS' },
+  { port: 80, service: 'HTTP', proto: 'TCP', risk: 'MEDIUM', vector: 'T1190 Exploit Public-Facing App, Cleartext interception' },
+  { port: 88, service: 'Kerberos', proto: 'TCP/UDP', risk: 'HIGH', vector: 'T1558 Steal/Forge Kerberos Tickets, AS-REP Kerberoasting' },
+  { port: 110, service: 'POP3', proto: 'TCP', risk: 'HIGH', vector: 'T1114 Email Collection, Cleartext Auth' },
+  { port: 135, service: 'MSRPC', proto: 'TCP', risk: 'CRITICAL', vector: 'T1021.003 DCOM Lateral Movement, RPC endpoint mapper abuse' },
+  { port: 139, service: 'NetBIOS', proto: 'TCP', risk: 'HIGH', vector: 'T1018 Remote System Discovery, SMB relay attacks' },
+  { port: 143, service: 'IMAP', proto: 'TCP', risk: 'MEDIUM', vector: 'T1114 Email Access, Password spray vectors' },
+  { port: 389, service: 'LDAP', proto: 'TCP/UDP', risk: 'HIGH', vector: 'T1069 Domain Group Enumeration, LDAP injection' },
+  { port: 443, service: 'HTTPS', proto: 'TCP', risk: 'LOW', vector: 'T1071.001 Web Protocols C2, Encrypted exfiltration' },
+  { port: 445, service: 'SMB', proto: 'TCP', risk: 'CRITICAL', vector: 'T1210 EternalBlue, WannaCry exploitation' },
+  { port: 636, service: 'LDAPS', proto: 'TCP', risk: 'LOW', vector: 'T1087.002 Domain Account Reconnaissance over TLS' },
+  { port: 1433, service: 'MSSQL', proto: 'TCP', risk: 'HIGH', vector: 'T1059 xp_cmdshell Execution, SQLi xp_dirtree hash steal' },
+  { port: 1521, service: 'Oracle DB', proto: 'TCP', risk: 'HIGH', vector: 'T1505.001 SQL Stored Procedures, TNS Poisoning' },
+  { port: 2049, service: 'NFS', proto: 'TCP/UDP', risk: 'HIGH', vector: 'T1005 Data from Local System, Unrestricted share mounts' },
+  { port: 3306, service: 'MySQL', proto: 'TCP', risk: 'HIGH', vector: 'T1190 SQL Injection, Rogue MySQL client file read' },
+  { port: 3389, service: 'RDP', proto: 'TCP', risk: 'HIGH', vector: 'T1021.001 Remote Desktop Protocol, BlueKeep exploit' },
+  { port: 5432, service: 'PostgreSQL', proto: 'TCP', risk: 'HIGH', vector: 'T1059 COPY TO PROGRAM execution, CVE-2019-9193' },
+  { port: 5900, service: 'VNC', proto: 'TCP', risk: 'HIGH', vector: 'T1021.005 VNC Remote Access, Null-auth bypass' },
+  { port: 6379, service: 'Redis', proto: 'TCP', risk: 'CRITICAL', vector: 'T1053 Cronjob Overwrite, Unauthenticated SSH key injection' },
+  { port: 8080, service: 'HTTP-Alt', proto: 'TCP', risk: 'MEDIUM', vector: 'T1190 Tomcat/Jenkins web consoles RCE' },
+  { port: 8443, service: 'HTTPS-Alt', proto: 'TCP', risk: 'MEDIUM', vector: 'T1190 Admin Management Portals, Web App Flaws' },
+  { port: 9200, service: 'Elasticsearch', proto: 'TCP', risk: 'CRITICAL', vector: 'T1005 Unauthenticated Data Exfiltration, Groovy RCE' },
+  { port: 27017, service: 'MongoDB', proto: 'TCP', risk: 'CRITICAL', vector: 'T1486 Ransomware data dump, Default open auth' }
+];

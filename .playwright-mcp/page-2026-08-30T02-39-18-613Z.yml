@@ -1,0 +1,136 @@
+- generic [ref=f6e3]:
+  - complementary [ref=f6e4]:
+    - button "CyberShield v2.5" [ref=f6e6] [cursor=pointer]:
+      - generic [ref=f6e11]:
+        - generic [ref=f6e12]: CyberShield
+        - generic [ref=f6e13]: v2.5
+    - generic [ref=f6e14]:
+      - generic [ref=f6e15]:
+        - generic [ref=f6e16]: Console
+        - button "Overview Dashboard" [ref=f6e17] [cursor=pointer]
+      - generic [ref=f6e24]:
+        - generic [ref=f6e25]: Cryptography
+        - button "Password & Entropy" [ref=f6e26] [cursor=pointer]
+        - button "AES-GCM Vault" [ref=f6e31] [cursor=pointer]
+      - generic [ref=f6e36]:
+        - generic [ref=f6e37]: Integrity & Data
+        - button "Hash & Checksum" [ref=f6e38] [cursor=pointer]
+        - button "Multi-Encoder" [ref=f6e43] [cursor=pointer]
+      - generic [ref=f6e50]:
+        - generic [ref=f6e51]: AppSec & Auth
+        - button "JWT Inspector" [ref=f6e52] [cursor=pointer]
+        - button "Security Headers" [ref=f6e57] [cursor=pointer]
+      - generic [ref=f6e61]:
+        - generic [ref=f6e62]: Network & Intel
+        - button "CIDR Subnetting" [ref=f6e63] [cursor=pointer]
+        - button "URL Risk Analyzer" [ref=f6e70] [cursor=pointer]
+        - button "MITRE Port Matrix" [ref=f6e75] [cursor=pointer]
+      - generic [ref=f6e81]:
+        - generic [ref=f6e82]: System & Gateway
+        - button "Audit Event Logs" [ref=f6e83] [cursor=pointer]
+        - button "Buka di HP (Wi-Fi QR) Wi-Fi" [ref=f6e87] [cursor=pointer]:
+          - generic [ref=f6e90]: Buka di HP (Wi-Fi QR)
+          - generic [ref=f6e91]: Wi-Fi
+    - generic [ref=f6e93]:
+      - generic [ref=f6e94]: Client Engine
+      - generic [ref=f6e97]: 0 KB Egress
+  - generic [ref=f6e98]:
+    - banner [ref=f6e99]:
+      - generic [ref=f6e100]:
+        - button "Toggle navigation" [ref=f6e101] [cursor=pointer]
+        - generic [ref=f6e103]: System Overview
+      - generic [ref=f6e105]:
+        - button [ref=f6e106] [cursor=pointer]
+        - button "Buka di HP via Wi-Fi" [ref=f6e110] [cursor=pointer]
+    - main [ref=f6e117]:
+      - generic [ref=f6e118]:
+        - generic [ref=f6e119]:
+          - generic [ref=f6e120]:
+            - generic [ref=f6e121]: "Active Console: CyberShield v2.5 Architecture"
+            - heading "Security Engineering Console" [level=1] [ref=f6e123]
+            - paragraph [ref=f6e124]: Modular security workbench running 100% inside your local client sandbox. Zero data telemetry, zero network tracking, hardware-backed crypto primitives.
+          - generic [ref=f6e125]:
+            - button "Buka di HP (Wi-Fi QR)" [ref=f6e126] [cursor=pointer]
+            - button "Launch Crypto" [ref=f6e129] [cursor=pointer]
+        - generic [ref=f6e133]:
+          - generic [ref=f6e134]:
+            - generic [ref=f6e135]: Hardware CSPRNG
+            - generic [ref=f6e136]: WebCrypto API
+            - generic [ref=f6e137]: NIST 800-63B standard
+          - generic [ref=f6e138]:
+            - generic [ref=f6e139]: Network Egress
+            - generic [ref=f6e140]: 0 KB / Offline
+            - generic [ref=f6e141]: Strict client sandbox
+          - generic [ref=f6e142]:
+            - generic [ref=f6e143]: Threat Database
+            - generic [ref=f6e144]: 27 ATT&CK Ports
+            - generic [ref=f6e145]: MITRE Matrix v14
+          - generic [ref=f6e146]:
+            - generic [ref=f6e147]: Nginx Wi-Fi Server
+            - generic [ref=f6e148]: Port 8080 Active
+            - generic [ref=f6e149]: 192.168.1.16
+        - generic [ref=f6e150]:
+          - generic [ref=f6e151]:
+            - generic [ref=f6e152]:
+              - heading "Cryptography & Primitives" [level=2] [ref=f6e153]
+              - paragraph [ref=f6e154]: Hardware-backed CSPRNG keys, passphrases, and authenticated symmetric vaults.
+            - generic [ref=f6e155]:
+              - button "Password & Diceware Generator NIST 800-63B Shannon Entropy & EFF passphrases" [ref=f6e156] [cursor=pointer]:
+                - generic [ref=f6e165]:
+                  - generic [ref=f6e166]: Password & Diceware Generator
+                  - generic [ref=f6e167]: NIST 800-63B Shannon Entropy & EFF passphrases
+              - button "AES-GCM-256 Symmetric Vault Client-side PBKDF2 100k key derivation & zero-egress encryption" [ref=f6e168] [cursor=pointer]:
+                - generic [ref=f6e177]:
+                  - generic [ref=f6e178]: AES-GCM-256 Symmetric Vault
+                  - generic [ref=f6e179]: Client-side PBKDF2 100k key derivation & zero-egress encryption
+          - generic [ref=f6e180]:
+            - generic [ref=f6e181]:
+              - heading "Integrity & Data Encoders" [level=2] [ref=f6e182]
+              - paragraph [ref=f6e183]: Cryptographic hashing, byte-level integrity verification, and multi-format conversions.
+            - generic [ref=f6e184]:
+              - button "Hash & Checksum Verifier SHA-1/256/384/512 digests and live byte-match verification" [ref=f6e185] [cursor=pointer]:
+                - generic [ref=f6e194]:
+                  - generic [ref=f6e195]: Hash & Checksum Verifier
+                  - generic [ref=f6e196]: SHA-1/256/384/512 digests and live byte-match verification
+              - button "Multi-Format Transformer Base64/URL, Hex bytes, Binary 8-bit stream, HTML entities, ROT13" [ref=f6e197] [cursor=pointer]:
+                - generic [ref=f6e208]:
+                  - generic [ref=f6e209]: Multi-Format Transformer
+                  - generic [ref=f6e210]: Base64/URL, Hex bytes, Binary 8-bit stream, HTML entities, ROT13
+          - generic [ref=f6e211]:
+            - generic [ref=f6e212]:
+              - heading "Application Security & Tokens" [level=2] [ref=f6e213]
+              - paragraph [ref=f6e214]: JWT token inspection, cryptographic claims, and modern HTTP security headers.
+            - generic [ref=f6e215]:
+              - button "JWT Token Inspector Decode JOSE header, claims payload, and real-time expiration validation" [ref=f6e216] [cursor=pointer]:
+                - generic [ref=f6e225]:
+                  - generic [ref=f6e226]: JWT Token Inspector
+                  - generic [ref=f6e227]: Decode JOSE header, claims payload, and real-time expiration validation
+              - button "HTTP Security Headers Builder Strict CSP, HSTS, X-Frame-Options for Nginx, Caddy, Cloudflare, Next.js" [ref=f6e228] [cursor=pointer]:
+                - generic [ref=f6e236]:
+                  - generic [ref=f6e237]: HTTP Security Headers Builder
+                  - generic [ref=f6e238]: Strict CSP, HSTS, X-Frame-Options for Nginx, Caddy, Cloudflare, Next.js
+          - generic [ref=f6e239]:
+            - generic [ref=f6e240]:
+              - heading "Network & Threat Intelligence" [level=2] [ref=f6e241]
+              - paragraph [ref=f6e242]: Subnet calculations, endpoint risk analysis, and adversary tactic mappings.
+            - generic [ref=f6e243]:
+              - button "CIDR Subnet Calculator IPv4 network, broadcast, usable host capacity, and wildcard allocation" [ref=f6e244] [cursor=pointer]:
+                - generic [ref=f6e255]:
+                  - generic [ref=f6e256]: CIDR Subnet Calculator
+                  - generic [ref=f6e257]: IPv4 network, broadcast, usable host capacity, and wildcard allocation
+              - button "URL & Endpoint Analyzer Dissect components, detect XSS patterns, punycode spoofing, and risky schemes" [ref=f6e258] [cursor=pointer]:
+                - generic [ref=f6e267]:
+                  - generic [ref=f6e268]: URL & Endpoint Analyzer
+                  - generic [ref=f6e269]: Dissect components, detect XSS patterns, punycode spoofing, and risky schemes
+              - button "MITRE ATT&CK Port & Risk DB 27 standard network service ports mapped to adversary techniques and CVEs" [ref=f6e270] [cursor=pointer]:
+                - generic [ref=f6e280]:
+                  - generic [ref=f6e281]: MITRE ATT&CK Port & Risk DB
+                  - generic [ref=f6e282]: 27 standard network service ports mapped to adversary techniques and CVEs
+        - generic [ref=f6e283]:
+          - generic [ref=f6e284]:
+            - generic [ref=f6e285]: Recent Session Audit Events
+            - button "View Full Audit Log →" [ref=f6e289] [cursor=pointer]
+          - generic [ref=f6e292]:
+            - generic [ref=f6e293]: 09:39:18
+            - generic [ref=f6e294]: System
+            - generic [ref=f6e295]: Modular security console initialized
