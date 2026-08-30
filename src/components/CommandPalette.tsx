@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, KeyRound, Hash, ShieldCheck, Globe, Network, Database, Terminal, Lock, Binary, Shield } from 'lucide-react';
+import { Search, KeyRound, Hash, ShieldCheck, Globe, Network, Database, History, Lock, Binary, Shield } from 'lucide-react';
 import { ViewId } from '../types/navigation';
 
 interface CommandPaletteProps {
@@ -26,16 +26,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const commands: CommandItem[] = [
-    { id: 'crypto-password', label: 'Password & NIST Entropy Generator', category: 'Cryptography', icon: KeyRound, shortcut: 'Ctrl+1' },
-    { id: 'integrity-hash', label: 'Hash & Checksum Verifier', category: 'Integrity', icon: Hash, shortcut: 'Ctrl+2' },
-    { id: 'appsec-jwt', label: 'JWT Token Inspector', category: 'AppSec', icon: ShieldCheck, shortcut: 'Ctrl+3' },
-    { id: 'network-url', label: 'URL & Endpoint Analyzer', category: 'Network', icon: Globe, shortcut: 'Ctrl+4' },
-    { id: 'network-cidr', label: 'CIDR Subnet Calculator', category: 'Network', icon: Network, shortcut: 'Ctrl+5' },
-    { id: 'crypto-aes', label: 'AES-GCM-256 Symmetric Vault', category: 'Cryptography', icon: Lock, shortcut: 'Ctrl+6' },
-    { id: 'integrity-encoder', label: 'Multi-Format Encoder / Decoder', category: 'Integrity', icon: Binary, shortcut: 'Ctrl+7' },
-    { id: 'appsec-headers', label: 'HTTP Security Headers Builder', category: 'AppSec', icon: Shield, shortcut: 'Ctrl+8' },
-    { id: 'network-mitre', label: 'MITRE ATT&CK Port Matrix', category: 'Network', icon: Database },
-    { id: 'system-logs', label: 'Session Audit Event Logs', category: 'System', icon: Terminal }
+    { id: 'crypto-password', label: 'Password Generator', category: 'Crypto', icon: KeyRound, shortcut: 'Ctrl+1' },
+    { id: 'integrity-hash', label: 'Hash & Checksum', category: 'Crypto', icon: Hash, shortcut: 'Ctrl+2' },
+    { id: 'appsec-jwt', label: 'JWT Decoder', category: 'Web', icon: ShieldCheck, shortcut: 'Ctrl+3' },
+    { id: 'network-url', label: 'URL Analyzer', category: 'Network', icon: Globe, shortcut: 'Ctrl+4' },
+    { id: 'network-cidr', label: 'Subnet Calculator', category: 'Network', icon: Network, shortcut: 'Ctrl+5' },
+    { id: 'crypto-aes', label: 'AES-GCM Encryption', category: 'Crypto', icon: Lock, shortcut: 'Ctrl+6' },
+    { id: 'integrity-encoder', label: 'Encoder / Decoder', category: 'Crypto', icon: Binary, shortcut: 'Ctrl+7' },
+    { id: 'appsec-headers', label: 'Security Headers', category: 'Web', icon: Shield, shortcut: 'Ctrl+8' },
+    { id: 'network-mitre', label: 'Port Reference', category: 'Network', icon: Database },
+    { id: 'system-logs', label: 'Activity Logs', category: 'Logs', icon: History }
   ];
 
   const filtered = commands.filter((c) =>
@@ -77,33 +77,33 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/60 backdrop-blur-xs"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-[#0B0F17] border border-[#F59E0B]/40 rounded-lg overflow-hidden shadow-2xl"
+        className="w-full max-w-lg bg-[#18181B] border border-[#34D399]/40 rounded-lg overflow-hidden shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-2.5 px-3.5 py-2.5 border-b border-[#E2E8F0]/10 bg-[#131924]">
-          <Search className="w-4 h-4 text-[#E2E8F0]/40 shrink-0" />
+        <div className="flex items-center gap-2.5 px-3.5 py-2.5 border-b border-[#F4F4F5]/10 bg-[#27272A]">
+          <Search className="w-4 h-4 text-[#A1A1AA] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type a tool name..."
-            className="w-full bg-transparent font-mono text-xs text-[#E2E8F0] placeholder:text-[#E2E8F0]/30 focus:outline-none"
+            placeholder="Search tools..."
+            className="w-full bg-transparent font-mono text-xs text-[#F4F4F5] placeholder:text-[#A1A1AA]/50 focus:outline-none"
           />
-          <kbd className="px-1.5 py-0.5 text-[10px] font-mono text-[#E2E8F0]/40 bg-[#0B0F17] rounded border border-[#E2E8F0]/10">
+          <kbd className="px-1.5 py-0.5 text-[10px] font-mono text-[#A1A1AA] bg-[#18181B] rounded border border-[#F4F4F5]/10">
             ESC
           </kbd>
         </div>
 
         <div className="max-h-72 overflow-y-auto p-1.5 space-y-0.5 font-mono text-xs">
           {filtered.length === 0 ? (
-            <div className="py-6 text-center text-xs text-[#E2E8F0]/40">
-              No matching tools
+            <div className="py-6 text-center text-xs text-[#A1A1AA]">
+              No tools found
             </div>
           ) : (
             filtered.map((item, idx) => {
@@ -119,8 +119,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`w-full flex items-center justify-between gap-2.5 px-2.5 py-2 rounded text-left transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-[#F59E0B] text-[#0B0F17] font-semibold'
-                      : 'text-[#E2E8F0]/80 hover:bg-[#E2E8F0]/5'
+                      ? 'bg-[#34D399] text-[#18181B] font-semibold'
+                      : 'text-[#F4F4F5]/80 hover:bg-[#F4F4F5]/5'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
@@ -129,7 +129,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   </div>
                   {item.shortcut && (
                     <kbd className={`px-1.5 py-0.2 text-[10px] rounded border ${
-                      isSelected ? 'border-[#0B0F17]/30 bg-[#0B0F17]/10 text-[#0B0F17]' : 'border-[#E2E8F0]/10 bg-[#131924] text-[#E2E8F0]/40'
+                      isSelected ? 'border-[#18181B]/30 bg-[#18181B]/10 text-[#18181B]' : 'border-[#F4F4F5]/10 bg-[#27272A] text-[#A1A1AA]'
                     }`}>
                       {item.shortcut}
                     </kbd>

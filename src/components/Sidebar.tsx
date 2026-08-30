@@ -10,7 +10,7 @@ import {
   Network,
   Globe,
   Database,
-  Terminal,
+  History,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -33,46 +33,36 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isMobileOpen,
   onMobileClose
 }) => {
-  const navSections: { title: string; items: { id: ViewId; label: string; icon: React.ElementType }[] }[] = [
+  const sections: { title: string; items: { id: ViewId; label: string; icon: React.ElementType }[] }[] = [
     {
-      title: 'Console',
+      title: 'General',
       items: [
         { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard }
       ]
     },
     {
-      title: 'Cryptography',
+      title: 'Crypto & Hash',
       items: [
-        { id: 'crypto-password', label: 'Password / Entropy', icon: KeyRound },
-        { id: 'crypto-aes', label: 'AES-GCM-256 Vault', icon: Lock }
-      ]
-    },
-    {
-      title: 'Integrity',
-      items: [
+        { id: 'crypto-password', label: 'Password Generator', icon: KeyRound },
+        { id: 'crypto-aes', label: 'AES-GCM Encryption', icon: Lock },
         { id: 'integrity-hash', label: 'Hash & Checksum', icon: Hash },
-        { id: 'integrity-encoder', label: 'Multi-Encoder', icon: Binary }
+        { id: 'integrity-encoder', label: 'Encoder / Decoder', icon: Binary }
       ]
     },
     {
-      title: 'AppSec',
+      title: 'Web & Network',
       items: [
-        { id: 'appsec-jwt', label: 'JWT Inspector', icon: ShieldCheck },
-        { id: 'appsec-headers', label: 'Security Headers', icon: Shield }
-      ]
-    },
-    {
-      title: 'Network',
-      items: [
-        { id: 'network-cidr', label: 'CIDR Subnetting', icon: Network },
+        { id: 'appsec-jwt', label: 'JWT Decoder', icon: ShieldCheck },
+        { id: 'appsec-headers', label: 'Security Headers', icon: Shield },
+        { id: 'network-cidr', label: 'Subnet Calculator', icon: Network },
         { id: 'network-url', label: 'URL Analyzer', icon: Globe },
-        { id: 'network-mitre', label: 'Port Matrix', icon: Database }
+        { id: 'network-mitre', label: 'Port Reference', icon: Database }
       ]
     },
     {
-      title: 'System',
+      title: 'Logs',
       items: [
-        { id: 'system-logs', label: 'Audit Logs', icon: Terminal }
+        { id: 'system-logs', label: 'Activity Logs', icon: History }
       ]
     }
   ];
@@ -87,45 +77,46 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {isMobileOpen && (
         <div
           onClick={onMobileClose}
-          className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs md:hidden"
         />
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 flex flex-col bg-[#0B0F17] border-r border-[#E2E8F0]/10 transition-all duration-200 ${
-          isOpen ? 'w-60' : 'w-16'
-        } ${isMobileOpen ? 'translate-x-0 !w-60' : '-translate-x-full md:translate-x-0'}`}
+        className={`fixed top-0 bottom-0 left-0 z-50 flex flex-col bg-[#18181B] border-r border-[#F4F4F5]/10 transition-all duration-150 ${
+          isOpen ? 'w-56' : 'w-14'
+        } ${isMobileOpen ? 'translate-x-0 !w-56' : '-translate-x-full md:translate-x-0'}`}
       >
         {/* Header */}
-        <div className="h-12 flex items-center justify-between px-3 border-b border-[#E2E8F0]/10 bg-[#0B0F17]">
+        <div className="h-12 flex items-center justify-between px-3 border-b border-[#F4F4F5]/10 bg-[#18181B]">
           <button
             onClick={() => handleNav('dashboard')}
             className="flex items-center gap-2 min-w-0 text-left cursor-pointer"
           >
-            <div className="w-6 h-6 rounded bg-[#F59E0B]/10 border border-[#F59E0B]/30 flex items-center justify-center text-[#F59E0B] shrink-0 font-mono font-bold text-xs">
-              CS
+            <div className="w-6 h-6 rounded bg-[#34D399]/15 border border-[#34D399]/30 flex items-center justify-center text-[#34D399] shrink-0 font-mono font-bold text-xs">
+              ST
             </div>
             {isOpen && (
-              <span className="font-mono font-bold text-xs text-[#E2E8F0] tracking-wider">
-                SECURITYTOOLS
+              <span className="font-mono font-semibold text-xs text-[#F4F4F5] tracking-wide truncate">
+                SecurityTools
               </span>
             )}
           </button>
 
           <button
             onClick={onToggle}
-            className="hidden md:flex p-1 rounded text-[#E2E8F0]/40 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors cursor-pointer"
+            className="hidden md:flex p-1 rounded text-[#F4F4F5]/40 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors cursor-pointer"
+            title={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
           >
             {isOpen ? <ChevronLeft className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
           </button>
         </div>
 
-        {/* Links */}
+        {/* Navigation items */}
         <div className="flex-1 overflow-y-auto p-2 space-y-3 font-mono text-xs">
-          {navSections.map((sec, idx) => (
+          {sections.map((sec, idx) => (
             <div key={idx} className="space-y-0.5">
               {isOpen && (
-                <div className="px-2 py-1 text-[10px] font-semibold text-[#E2E8F0]/30 uppercase tracking-wider">
+                <div className="px-2 py-1 text-[10px] font-medium text-[#A1A1AA]/60 uppercase tracking-wider">
                   {sec.title}
                 </div>
               )}
@@ -139,8 +130,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     title={!isOpen ? item.label : undefined}
                     className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-left transition-colors cursor-pointer text-xs ${
                       active
-                        ? 'bg-[#F59E0B] text-[#0B0F17] font-bold'
-                        : 'text-[#E2E8F0]/70 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5'
+                        ? 'bg-[#34D399] text-[#18181B] font-semibold'
+                        : 'text-[#A1A1AA] hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5 shrink-0" />
@@ -153,14 +144,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-2.5 border-t border-[#E2E8F0]/10 bg-[#0B0F17] text-[10px] font-mono text-[#E2E8F0]/40">
+        <div className="p-2.5 border-t border-[#F4F4F5]/10 bg-[#18181B] text-[10px] font-mono text-[#A1A1AA]">
           {isOpen ? (
             <div className="flex items-center justify-between">
-              <span>Sandbox</span>
-              <span className="text-[#F59E0B]">Port 8080</span>
+              <span>Client-side only</span>
+              <span className="text-[#34D399]">Offline</span>
             </div>
           ) : (
-            <div className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] mx-auto" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#34D399] mx-auto" />
           )}
         </div>
       </aside>

@@ -3,7 +3,7 @@ import { Network, RotateCcw } from 'lucide-react';
 import { calculateCidr } from '../../utils/cidr';
 import { SubnetResult } from '../../types';
 
-const SAMPLE_CIDR = '192.168.10.0/24';
+const SAMPLE_CIDR = '192.168.1.0/24';
 
 interface CidrCalculatorProps {
   onShowToast: (msg: string) => void;
@@ -35,128 +35,101 @@ export const CidrCalculator: React.FC<CidrCalculatorProps> = ({ onShowToast, onL
   };
 
   return (
-    <div className="space-y-6 font-mono">
-      {/* Input Section */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs">
-          <label className="text-[#E2E8F0]/60">IPv4 CIDR Block Notation</label>
+    <div className="space-y-4 font-mono text-xs">
+      <div className="space-y-1.5">
+        <div className="flex items-center justify-between">
+          <label className="text-[#A1A1AA]">IPv4 CIDR Block</label>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-[11px]">
-              <span className="text-[#E2E8F0]/40">Presets:</span>
-              <button
-                onClick={() => handleLoadSample('10.0.0.0/8')}
-                className="text-[#F59E0B] hover:underline cursor-pointer"
-              >
-                /8
-              </button>
-              <button
-                onClick={() => handleLoadSample('172.16.0.0/16')}
-                className="text-[#F59E0B] hover:underline cursor-pointer"
-              >
-                /16
-              </button>
-              <button
-                onClick={() => handleLoadSample('192.168.1.0/24')}
-                className="text-[#F59E0B] hover:underline cursor-pointer"
-              >
-                /24
-              </button>
-              <button
-                onClick={() => handleLoadSample('192.168.10.128/28')}
-                className="text-[#F59E0B] hover:underline cursor-pointer"
-              >
-                /28
-              </button>
+              <span className="text-[#A1A1AA]/60">Presets:</span>
+              <button onClick={() => handleLoadSample('10.0.0.0/8')} className="text-[#34D399] hover:underline cursor-pointer">/8</button>
+              <button onClick={() => handleLoadSample('172.16.0.0/16')} className="text-[#34D399] hover:underline cursor-pointer">/16</button>
+              <button onClick={() => handleLoadSample('192.168.1.0/24')} className="text-[#34D399] hover:underline cursor-pointer">/24</button>
+              <button onClick={() => handleLoadSample('192.168.1.0/28')} className="text-[#34D399] hover:underline cursor-pointer">/28</button>
             </div>
             {cidrInput && (
               <button
                 onClick={handleClear}
-                className="text-[#E2E8F0]/50 hover:text-[#E2E8F0] flex items-center gap-1 text-[11px] cursor-pointer"
+                className="text-[#A1A1AA] hover:text-[#F4F4F5] flex items-center gap-1 text-[11px] cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" /> Clear
               </button>
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2 bg-[#131924] border border-[#E2E8F0]/15 focus-within:border-[#F59E0B] rounded-xl p-3 shadow-inner">
-          <Network className="w-5 h-5 text-[#F59E0B] shrink-0" />
+        <div className="flex items-center gap-2 bg-[#18181B] border border-[#F4F4F5]/10 focus-within:border-[#34D399] rounded-lg p-2.5">
+          <Network className="w-4 h-4 text-[#34D399] shrink-0" />
           <input
             type="text"
             value={cidrInput}
             onChange={(e) => setCidrInput(e.target.value)}
             placeholder="192.168.1.0/24..."
-            className="w-full bg-transparent text-xs sm:text-sm text-[#E2E8F0] placeholder:text-[#E2E8F0]/30 focus:outline-none"
+            className="w-full bg-transparent text-xs text-[#F4F4F5] placeholder:text-[#A1A1AA]/40 focus:outline-none"
           />
         </div>
       </div>
 
-      {/* Subnet Calculation Matrix */}
       {subnet ? (
-        <div className="space-y-5">
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-[#131924] border border-[#E2E8F0]/10 rounded-xl text-xs">
-            <div className="space-y-1">
-              <div className="text-[#E2E8F0]/50 text-[10px]">Usable Host IPs</div>
-              <div className="text-[#F59E0B] font-bold text-sm sm:text-base">
+        <div className="space-y-3.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 bg-[#18181B] border border-[#F4F4F5]/10 rounded-lg text-xs">
+            <div>
+              <div className="text-[#A1A1AA] text-[10px]">Usable Hosts</div>
+              <div className="text-[#34D399] font-bold text-sm">
                 {subnet.usableHosts.toLocaleString()}
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[#E2E8F0]/50 text-[10px]">Total IP Capacity</div>
-              <div className="text-[#E2E8F0] font-bold text-sm sm:text-base">
+            <div>
+              <div className="text-[#A1A1AA] text-[10px]">Total IPs</div>
+              <div className="text-[#F4F4F5] font-bold text-sm">
                 {subnet.totalHosts.toLocaleString()}
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[#E2E8F0]/50 text-[10px]">Prefix Mask</div>
-              <div className="text-[#E2E8F0] font-bold text-sm sm:text-base">/{subnet.prefix}</div>
+            <div>
+              <div className="text-[#A1A1AA] text-[10px]">Prefix</div>
+              <div className="text-[#F4F4F5] font-bold text-sm">/{subnet.prefix}</div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[#E2E8F0]/50 text-[10px]">Address Class</div>
-              <div className="text-[#E2E8F0] truncate font-medium">{subnet.ipClass}</div>
+            <div>
+              <div className="text-[#A1A1AA] text-[10px]">Class</div>
+              <div className="text-[#F4F4F5] font-medium">{subnet.ipClass}</div>
             </div>
           </div>
 
-          {/* Subnet Details Table */}
-          <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-xl overflow-hidden text-xs">
-            <div className="px-4 py-3 border-b border-[#E2E8F0]/10 font-bold text-[#E2E8F0] uppercase tracking-wider text-[11px] bg-[#0B0F17]">
-              Subnet Boundary Allocation
-            </div>
+          <div className="bg-[#18181B] border border-[#F4F4F5]/10 rounded-lg overflow-hidden text-xs">
             <div className="divide-y divide-white/5">
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Network Address:</span>
-                <span className="sm:col-span-3 text-[#F59E0B] font-semibold">{subnet.network}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Network Address:</span>
+                <span className="sm:col-span-3 text-[#34D399] font-medium">{subnet.network}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Subnet Netmask:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0] font-semibold">{subnet.netmask}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Netmask:</span>
+                <span className="sm:col-span-3 text-[#F4F4F5] font-medium">{subnet.netmask}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Broadcast Address:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0]">{subnet.broadcast}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Broadcast:</span>
+                <span className="sm:col-span-3 text-[#F4F4F5]">{subnet.broadcast}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">First Usable Host:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0]">{subnet.firstHost}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">First Usable Host:</span>
+                <span className="sm:col-span-3 text-[#F4F4F5]">{subnet.firstHost}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Last Usable Host:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0]">{subnet.lastHost}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Last Usable Host:</span>
+                <span className="sm:col-span-3 text-[#F4F4F5]">{subnet.lastHost}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Wildcard Mask:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0]/80">{subnet.wildcard}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Wildcard Mask:</span>
+                <span className="sm:col-span-3 text-[#A1A1AA]">{subnet.wildcard}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-4 p-3 gap-2">
-                <span className="text-[#E2E8F0]/50">Binary Netmask:</span>
-                <span className="sm:col-span-3 text-[#E2E8F0]/70 font-mono tracking-wider">{subnet.binaryMask}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-4 p-2.5 gap-1">
+                <span className="text-[#A1A1AA]">Binary Netmask:</span>
+                <span className="sm:col-span-3 text-[#A1A1AA]">{subnet.binaryMask}</span>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="p-8 text-center bg-[#131924] border border-[#E2E8F0]/10 rounded-xl text-xs text-[#E2E8F0]/40">
-          Enter an IPv4 CIDR string (e.g. 192.168.1.0/24) to calculate network boundaries.
+        <div className="p-6 text-center bg-[#18181B] border border-[#F4F4F5]/10 rounded-lg text-xs text-[#A1A1AA]">
+          Enter an IPv4 CIDR string (e.g. 192.168.1.0/24) to calculate subnet values.
         </div>
       )}
     </div>

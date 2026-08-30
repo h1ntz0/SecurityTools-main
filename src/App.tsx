@@ -28,8 +28,8 @@ export const App: React.FC = () => {
       id: 'init-1',
       timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
       tool: 'System',
-      action: 'Console workspace ready',
-      details: 'Port 8080 active'
+      action: 'Session started',
+      details: 'Ready'
     }
   ]);
 
@@ -78,7 +78,7 @@ export const App: React.FC = () => {
     setLogs((prev) => [entry, ...prev.slice(0, 49)]);
   }, []);
 
-  // Keyboard Shortcuts (Ctrl+K, Ctrl+1..8)
+  // Keyboard Shortcuts (Ctrl+K, Ctrl+0..8)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
@@ -119,7 +119,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#E2E8F0] flex selection:bg-[#F59E0B]/20 selection:text-[#F59E0B]">
+    <div className="min-h-screen bg-[#18181B] text-[#F4F4F5] flex selection:bg-[#34D399]/20 selection:text-[#34D399]">
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />
 
       <CommandPalette
@@ -138,8 +138,8 @@ export const App: React.FC = () => {
       />
 
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-200 ${
-          sidebarOpen ? 'md:ml-60' : 'md:ml-16'
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-150 ${
+          sidebarOpen ? 'md:ml-56' : 'md:ml-14'
         }`}
       >
         <TopHeader
@@ -148,107 +148,107 @@ export const App: React.FC = () => {
           onMobileMenuToggle={() => setMobileSidebarOpen(!mobileSidebarOpen)}
         />
 
-        <main className="flex-1 p-3.5 sm:p-5 lg:p-6">
+        <main className="flex-1 p-3.5 sm:p-5 max-w-5xl w-full mx-auto">
           {currentView === 'dashboard' && (
             <DashboardView onNavigate={navigateTo} logs={logs} />
           )}
 
           {currentView === 'crypto-password' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Cryptography / Password Generator</div>
+                <div className="text-[#34D399] font-medium">Password Generator</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <PasswordGenerator onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'crypto-aes' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Cryptography / AES-GCM-256 Symmetric Vault</div>
+                <div className="text-[#34D399] font-medium">AES-GCM Encryption & Decryption</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <AesVault onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'integrity-hash' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Integrity / Hash & Checksum Verifier</div>
+                <div className="text-[#34D399] font-medium">Hash & Checksum Verifier</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <HashChecksum onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'integrity-encoder' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Integrity / Multi-Format Transformer</div>
+                <div className="text-[#34D399] font-medium">Multi-Format Encoder / Decoder</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <MultiEncoder onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'appsec-jwt' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">AppSec / JWT Inspector</div>
+                <div className="text-[#34D399] font-medium">JWT Decoder</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <JwtInspector onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'appsec-headers' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">AppSec / Security Headers Builder</div>
+                <div className="text-[#34D399] font-medium">Security Headers Generator</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <SecurityHeaders onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'network-cidr' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Network / CIDR Subnet Calculator</div>
+                <div className="text-[#34D399] font-medium">Subnet Calculator</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <CidrCalculator onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'network-url' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <div className="font-mono text-xs">
-                <div className="text-[#F59E0B] font-bold">Network / URL Risk Analyzer</div>
+                <div className="text-[#34D399] font-medium">URL Analyzer</div>
               </div>
-              <div className="bg-[#131924] border border-[#E2E8F0]/10 rounded-lg p-4 shadow-sm">
+              <div className="bg-[#27272A] border border-[#F4F4F5]/10 rounded-lg p-4">
                 <UrlAnalyzer onShowToast={addToast} onLogEvent={logEvent} />
               </div>
             </div>
           )}
 
           {currentView === 'network-mitre' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <PortRiskDb />
             </div>
           )}
 
           {currentView === 'system-logs' && (
-            <div className="max-w-5xl mx-auto space-y-4">
+            <div className="space-y-3">
               <IncidentLogs
                 logs={logs}
                 onClearLogs={() => {

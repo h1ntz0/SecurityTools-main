@@ -15,7 +15,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ toasts, onDismis
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className="pointer-events-auto flex items-center justify-between gap-3 bg-[#0B0F17] border border-[#F59E0B]/50 shadow-lg shadow-[#F59E0B]/10 text-[#E2E8F0] px-4 py-3 rounded-lg text-xs font-mono backdrop-blur-md transition-all animate-in slide-in-from-bottom-2 duration-150"
+          className="pointer-events-auto flex items-center justify-between gap-3 bg-[#18181B] border border-[#34D399]/50 shadow-lg shadow-[#34D399]/10 text-[#F4F4F5] px-4 py-3 rounded-lg text-xs font-mono backdrop-blur-md transition-all animate-in slide-in-from-bottom-2 duration-150"
         >
           <div className="flex items-center gap-2.5 min-w-0">
             {toast.type === 'error' ? (
@@ -23,13 +23,13 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ toasts, onDismis
             ) : toast.type === 'info' ? (
               <Info className="w-4 h-4 text-cyan-400 shrink-0" />
             ) : (
-              <CheckCircle className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <CheckCircle className="w-4 h-4 text-[#34D399] shrink-0" />
             )}
             <span className="truncate">{toast.message}</span>
           </div>
           <button
             onClick={() => onDismiss(toast.id)}
-            className="text-[#E2E8F0]/40 hover:text-[#E2E8F0] transition-colors p-0.5 rounded hover:bg-[#E2E8F0]/10"
+            className="text-[#F4F4F5]/40 hover:text-[#F4F4F5] transition-colors p-0.5 rounded hover:bg-[#F4F4F5]/10"
             aria-label="Dismiss toast"
           >
             <X className="w-3.5 h-3.5" />

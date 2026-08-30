@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#0B0F17]/90 backdrop-blur-md border-b border-[#E2E8F0]/10">
+    <header className="sticky top-0 z-40 w-full bg-[#18181B]/90 backdrop-blur-md border-b border-[#F4F4F5]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
         {/* Brand */}
         <div className="flex items-center gap-3">
@@ -24,12 +24,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2.5 text-left group cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/30 flex items-center justify-center text-[#F59E0B] group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-lg bg-[#34D399]/10 border border-[#34D399]/30 flex items-center justify-center text-[#34D399] group-hover:scale-105 transition-transform">
               <ShieldCheck className="w-4 h-4" />
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="font-mono font-bold text-sm text-[#E2E8F0] tracking-tight">SecurityTools</span>
-              <span className="text-[10px] font-mono text-[#F59E0B] bg-[#F59E0B]/10 border border-[#F59E0B]/30 px-1.5 py-0.2 rounded font-semibold">
+              <span className="font-mono font-bold text-sm text-[#F4F4F5] tracking-tight">SecurityTools</span>
+              <span className="text-[10px] font-mono text-[#34D399] bg-[#34D399]/10 border border-[#34D399]/30 px-1.5 py-0.2 rounded font-semibold">
                 v2.5
               </span>
             </div>
@@ -39,19 +39,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
           <nav className="hidden md:flex items-center gap-1 ml-6 text-xs font-mono">
             <button
               onClick={() => handleNavClick('toolkit')}
-              className="px-3 py-1.5 rounded-md text-[#E2E8F0]/70 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-md text-[#F4F4F5]/70 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors cursor-pointer"
             >
               Toolkit
             </button>
             <button
               onClick={() => handleNavClick('portdb')}
-              className="px-3 py-1.5 rounded-md text-[#E2E8F0]/70 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-md text-[#F4F4F5]/70 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors cursor-pointer"
             >
               Port & Risk DB
             </button>
             <button
               onClick={() => handleNavClick('incidents')}
-              className="px-3 py-1.5 rounded-md text-[#E2E8F0]/70 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-md text-[#F4F4F5]/70 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors cursor-pointer"
             >
               Incident Logs
             </button>
@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
           {/* Mobile QR Button - Highlighted */}
           <button
             onClick={onOpenQr}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#F59E0B] hover:bg-[#F59E0B]/20 transition-all font-mono text-xs font-semibold shadow-sm shadow-[#F59E0B]/10 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#34D399]/10 border border-[#34D399]/40 text-[#34D399] hover:bg-[#34D399]/20 transition-all font-mono text-xs font-semibold shadow-sm shadow-[#34D399]/10 cursor-pointer"
             title="Scan QR to open on phone"
           >
             <Smartphone className="w-3.5 h-3.5" />
@@ -74,19 +74,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
           {/* Command Palette Trigger */}
           <button
             onClick={onOpenCmd}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#131924] border border-[#E2E8F0]/15 text-[#E2E8F0]/60 hover:text-[#E2E8F0] hover:border-[#F59E0B]/50 transition-all font-mono text-xs cursor-pointer"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#27272A] border border-[#F4F4F5]/15 text-[#F4F4F5]/60 hover:text-[#F4F4F5] hover:border-[#34D399]/50 transition-all font-mono text-xs cursor-pointer"
             title="Command search"
           >
             <Search className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline text-[#E2E8F0]/40">Search tools...</span>
-            <kbd className="text-[10px] text-[#E2E8F0]/40 bg-[#E2E8F0]/10 px-1.5 py-0.5 rounded border border-[#E2E8F0]/10">
+            <span className="hidden lg:inline text-[#F4F4F5]/40">Search tools...</span>
+            <kbd className="text-[10px] text-[#F4F4F5]/40 bg-[#F4F4F5]/10 px-1.5 py-0.5 rounded border border-[#F4F4F5]/10">
               Ctrl+K
             </kbd>
           </button>
 
           {/* Offline badge */}
-          <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E2E8F0]/5 border border-[#E2E8F0]/10 text-[11px] font-mono text-[#E2E8F0]/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
+          <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F4F5]/5 border border-[#F4F4F5]/10 text-[11px] font-mono text-[#F4F4F5]/60">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
             <span>Client-Side</span>
           </div>
 
@@ -95,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
             href="https://github.com/h1ntz0/SecurityTools-main"
             target="_blank"
             rel="noreferrer"
-            className="p-2 rounded-lg text-[#E2E8F0]/60 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors"
+            className="p-2 rounded-lg text-[#F4F4F5]/60 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors"
             title="GitHub Repository"
           >
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#E2E8F0]/70 hover:text-[#E2E8F0] hover:bg-[#E2E8F0]/5 transition-colors border border-[#E2E8F0]/10 cursor-pointer"
+            className="md:hidden p-2 rounded-lg text-[#F4F4F5]/70 hover:text-[#F4F4F5] hover:bg-[#F4F4F5]/5 transition-colors border border-[#F4F4F5]/10 cursor-pointer"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -116,32 +116,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E2E8F0]/10 bg-[#0B0F17] px-4 py-3 space-y-2 animate-in slide-in-from-top-2 duration-150 font-mono text-xs">
+        <div className="md:hidden border-t border-[#F4F4F5]/10 bg-[#18181B] px-4 py-3 space-y-2 animate-in slide-in-from-top-2 duration-150 font-mono text-xs">
           <button
             onClick={() => handleNavClick('toolkit')}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#E2E8F0]/80 hover:bg-[#E2E8F0]/5 hover:text-[#F59E0B] transition-colors cursor-pointer"
+            className="w-full text-left px-3 py-2 rounded-lg text-[#F4F4F5]/80 hover:bg-[#F4F4F5]/5 hover:text-[#34D399] transition-colors cursor-pointer"
           >
             → Security Toolkit
           </button>
           <button
             onClick={() => handleNavClick('portdb')}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#E2E8F0]/80 hover:bg-[#E2E8F0]/5 hover:text-[#F59E0B] transition-colors cursor-pointer"
+            className="w-full text-left px-3 py-2 rounded-lg text-[#F4F4F5]/80 hover:bg-[#F4F4F5]/5 hover:text-[#34D399] transition-colors cursor-pointer"
           >
             → MITRE Port DB
           </button>
           <button
             onClick={() => handleNavClick('incidents')}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#E2E8F0]/80 hover:bg-[#E2E8F0]/5 hover:text-[#F59E0B] transition-colors cursor-pointer"
+            className="w-full text-left px-3 py-2 rounded-lg text-[#F4F4F5]/80 hover:bg-[#F4F4F5]/5 hover:text-[#34D399] transition-colors cursor-pointer"
           >
             → Incident Logs
           </button>
-          <div className="pt-2 border-t border-[#E2E8F0]/10 flex items-center justify-between">
+          <div className="pt-2 border-t border-[#F4F4F5]/10 flex items-center justify-between">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQr();
               }}
-              className="flex items-center gap-2 text-[#F59E0B] font-semibold py-1.5 cursor-pointer"
+              className="flex items-center gap-2 text-[#34D399] font-semibold py-1.5 cursor-pointer"
             >
               <Smartphone className="w-4 h-4" />
               Tampilkan QR Code HP
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmd, onOpenQr, onScrollTo 
                 setMobileMenuOpen(false);
                 onOpenCmd();
               }}
-              className="flex items-center gap-1.5 text-[#E2E8F0]/60 py-1.5 cursor-pointer"
+              className="flex items-center gap-1.5 text-[#F4F4F5]/60 py-1.5 cursor-pointer"
             >
               <Search className="w-3.5 h-3.5" />
               Command Palette

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Copy, Check, RotateCcw, ArrowRightLeft } from 'lucide-react';
+import { Copy, Check, RotateCcw } from 'lucide-react';
 import { transformAllEncodings } from '../../utils/encoder';
 
 interface MultiEncoderProps {
@@ -8,7 +8,7 @@ interface MultiEncoderProps {
 }
 
 export const MultiEncoder: React.FC<MultiEncoderProps> = ({ onShowToast, onLogEvent }) => {
-  const [inputText, setInputText] = useState('SeniorSecDev#2026');
+  const [inputText, setInputText] = useState('Hello SecurityTools');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const transformed = useMemo(() => {
@@ -19,34 +19,30 @@ export const MultiEncoder: React.FC<MultiEncoderProps> = ({ onShowToast, onLogEv
     if (!text) return;
     navigator.clipboard.writeText(text);
     setCopiedKey(label);
-    onShowToast(`${label} copied to clipboard`);
-    onLogEvent('Multi-Encoder', `Copied ${label} format`);
+    onShowToast(`${label} copied`);
+    onLogEvent('Encoder', `Copied ${label}`);
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
   const formats = [
-    { key: 'base64', label: 'Base64 (Standard RFC 4648)', value: transformed.base64 },
-    { key: 'base64Url', label: 'Base64URL (JWT safe)', value: transformed.base64Url },
-    { key: 'hex', label: 'Hexadecimal (Raw bytes)', value: transformed.hex },
-    { key: 'binary', label: 'Binary (8-bit bytes stream)', value: transformed.binary },
-    { key: 'urlEncoded', label: 'URL Percent Encoded', value: transformed.urlEncoded },
-    { key: 'htmlEntities', label: 'HTML Numerical Entities', value: transformed.htmlEntities },
-    { key: 'rot13', label: 'ROT13 Caesar Cipher', value: transformed.rot13 }
+    { key: 'base64', label: 'Base64', value: transformed.base64 },
+    { key: 'base64Url', label: 'Base64URL', value: transformed.base64Url },
+    { key: 'hex', label: 'Hex', value: transformed.hex },
+    { key: 'binary', label: 'Binary', value: transformed.binary },
+    { key: 'urlEncoded', label: 'URL Encoded', value: transformed.urlEncoded },
+    { key: 'htmlEntities', label: 'HTML Entities', value: transformed.htmlEntities },
+    { key: 'rot13', label: 'ROT13', value: transformed.rot13 }
   ];
 
   return (
-    <div className="space-y-6 font-mono text-xs">
-      {/* Input Box */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs">
-          <label className="text-[#E2E8F0]/60 flex items-center gap-2">
-            <ArrowRightLeft className="w-3.5 h-3.5 text-[#F59E0B]" />
-            Input String (Live Multi-Format Transformation)
-          </label>
+    <div className="space-y-4 font-mono text-xs">
+      <div className="space-y-1.5">
+        <div className="flex items-center justify-between">
+          <label className="text-[#A1A1AA]">Input Text</label>
           {inputText && (
             <button
               onClick={() => setInputText('')}
-              className="text-[#E2E8F0]/50 hover:text-[#E2E8F0] flex items-center gap-1 text-[11px] cursor-pointer"
+              className="text-[#A1A1AA] hover:text-[#F4F4F5] flex items-center gap-1 text-[11px] cursor-pointer"
             >
               <RotateCcw className="w-3 h-3" /> Clear
             </button>
@@ -56,28 +52,27 @@ export const MultiEncoder: React.FC<MultiEncoderProps> = ({ onShowToast, onLogEv
           rows={3}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder="Type or paste any text or payload here..."
-          className="w-full bg-[#131924] border border-[#E2E8F0]/15 focus:border-[#F59E0B] rounded-xl p-3 text-[#E2E8F0] placeholder:text-[#E2E8F0]/30 focus:outline-none resize-y"
+          placeholder="Type or paste text..."
+          className="w-full bg-[#18181B] border border-[#F4F4F5]/10 focus:border-[#34D399] rounded-lg p-2.5 text-[#F4F4F5] placeholder:text-[#A1A1AA]/40 focus:outline-none resize-y"
         />
       </div>
 
-      {/* Grid of Transformed Formats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {formats.map((fmt) => (
-          <div key={fmt.key} className="bg-[#131924] border border-[#E2E8F0]/10 rounded-xl p-3.5 space-y-2">
+          <div key={fmt.key} className="bg-[#18181B] border border-[#F4F4F5]/10 rounded-lg p-3 space-y-1.5">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-[#E2E8F0]/80 text-[11px]">{fmt.label}</span>
+              <span className="font-medium text-[#F4F4F5] text-xs">{fmt.label}</span>
               <button
                 onClick={() => handleCopy(fmt.value, fmt.label)}
                 disabled={!fmt.value}
-                className="text-[#F59E0B] hover:underline flex items-center gap-1 text-[11px] disabled:opacity-30 cursor-pointer"
+                className="text-[#34D399] hover:underline flex items-center gap-1 text-[11px] disabled:opacity-30 cursor-pointer"
               >
-                {copiedKey === fmt.label ? <Check className="w-3 h-3 text-[#F59E0B]" /> : <Copy className="w-3 h-3" />}
+                {copiedKey === fmt.label ? <Check className="w-3 h-3 text-[#34D399]" /> : <Copy className="w-3 h-3" />}
                 {copiedKey === fmt.label ? 'Copied' : 'Copy'}
               </button>
             </div>
-            <div className="p-2.5 bg-[#0B0F17] border border-[#E2E8F0]/5 rounded-lg text-[#F59E0B] text-xs break-all max-h-24 overflow-y-auto select-all">
-              {fmt.value || <span className="text-[#E2E8F0]/20 italic">Empty</span>}
+            <div className="p-2 bg-[#27272A] border border-[#F4F4F5]/5 rounded text-[#34D399] text-xs break-all max-h-20 overflow-y-auto select-all">
+              {fmt.value || <span className="text-[#A1A1AA]/30 italic">Empty</span>}
             </div>
           </div>
         ))}
