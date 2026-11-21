@@ -30,3 +30,6 @@ lerna-debug.log*
 *.tsbuildinfo
 .tempmediaStorage
 OPEN_PORT_8080.bat
+
+# Playwright MCP artefacts
+.playwright-mcp/
